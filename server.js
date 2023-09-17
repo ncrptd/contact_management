@@ -10,15 +10,7 @@ const { contactRouter } = require('./src/routes/contact.routes');
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
 
-app.use(cors({
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}));
+app.use(cors());
 
 app.use(helmet());
 app.use(express.json())
