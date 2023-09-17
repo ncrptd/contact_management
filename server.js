@@ -8,7 +8,7 @@ const helmet = require('helmet');
 const { contactRouter } = require('./src/routes/contact.routes');
 
 
-const allowedOrigins = ['<http://localhost:3000>', '<https://example.com>'];
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
 
 app.use(cors({
     origin: (origin, callback) => {
