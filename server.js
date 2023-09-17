@@ -8,9 +8,17 @@ const helmet = require('helmet');
 const { contactRouter } = require('./src/routes/contact.routes');
 
 
-// const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
 
-app.use(cors());
+app.use(cors({
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}));
 
 app.use(helmet());
 app.use(express.json())
