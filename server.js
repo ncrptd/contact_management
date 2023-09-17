@@ -7,7 +7,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { contactRouter } = require('./src/routes/contact.routes');
 
-initializeDatabase();
 
 const allowedOrigins = ['<http://localhost:3000>', '<https://example.com>'];
 
@@ -26,10 +25,8 @@ app.use(express.json())
 
 
 app.use('/api/contacts', contactRouter)
-// app.get('/', (req, res) => {
-//     res.send('Hello, World!')
-// });
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+initializeDatabase().then(() => {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`)
+    })
 })
