@@ -7,7 +7,10 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { contactRouter } = require('./src/routes/contact.routes');
 
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 app.use(helmet());
 app.use(express.json())
