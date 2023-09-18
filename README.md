@@ -22,7 +22,7 @@ Before you begin, ensure you have met the following requirements:
 2. Install dependencies:
 
    ```bash
-   cd contact-management-api
+   cd contact-management-backend
    npm install
    ```
 
