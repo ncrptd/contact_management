@@ -7,9 +7,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { contactRouter } = require('./src/routes/contact.routes');
 
-
-const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
-
 app.use(cors());
 
 app.use(helmet());
