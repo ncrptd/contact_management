@@ -48,7 +48,9 @@ async function updateContact(req, res) {
         if (!updateDetails || Object.keys(updateDetails).length === 0) {
             return res.status(400).json({ error: 'Invalid update data' })
         }
-        const updatedContact = await Contact.findByIdAndUpdate(id, updateDetails, { new: true });
+        const contact = await Contact.findById(id);
+        const updatedContact = Object.assign(contact, updateDetails)
+        // const updatedContact = await Contact.findByIdAndUpdate(id, updateDetails, { new: true });
 
         if (!updateContact) {
             return res.status(400).json({ error: 'Contact not found' })
