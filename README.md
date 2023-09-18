@@ -16,7 +16,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/contact-management-api.git
+   git clone [https://github.com/yourusername/contact-management-api.git](https://github.com/ncrptd/contact_management-backend)
    ```
 
 2. Install dependencies:
