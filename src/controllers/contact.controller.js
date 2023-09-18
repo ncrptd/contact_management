@@ -49,19 +49,19 @@ async function updateContact(req, res) {
             return res.status(400).json({ error: 'Invalid update data' })
         }
         const contact = await Contact.findById(id);
-        const updatedContact = Object.assign(contact, updateDetails)
-        // const updatedContact = await Contact.findByIdAndUpdate(id, updateDetails, { new: true });
 
-        if (!updateContact) {
+        if (!contact) {
             return res.status(400).json({ error: 'Contact not found' })
         }
-
-        res.send(updatedContact)
+        Object.assign(contact, updateDetails);
+        await contact.save();
+        res.send(contact);
     } catch (error) {
         console.error('Error updating contact', error)
         res.status(500).json({ error: 'Failed to update Contact', message: error.message })
     }
 };
+
 async function deleteContact(req, res) {
     try {
         const contact = await Contact.findByIdAndDelete(req.params.id);
